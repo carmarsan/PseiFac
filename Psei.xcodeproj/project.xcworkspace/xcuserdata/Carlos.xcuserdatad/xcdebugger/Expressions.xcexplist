@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ListaBancosViewController.numberOfSections(in:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosOrdenados">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ListaBancosViewController.GetJsonBancos():ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosOrdenados">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
