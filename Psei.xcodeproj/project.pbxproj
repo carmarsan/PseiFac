@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07953E0221FF8FE600B1EEC5 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		07FF559221FF46A5005D376C /* Psei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Psei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07FF559521FF46A5005D376C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07FF559721FF46A5005D376C /* ConfiguracionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfiguracionViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		07FF559421FF46A5005D376C /* Psei */ = {
 			isa = PBXGroup;
 			children = (
+				07953E0221FF8FE600B1EEC5 /* MyPlayground.playground */,
 				07FF55AE21FF5190005D376C /* Modelos */,
 				07FF55A921FF472D005D376C /* ViewControllers */,
 				07FF559521FF46A5005D376C /* AppDelegate.swift */,

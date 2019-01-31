@@ -3,10 +3,22 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ListaBancosViewController.numberOfSections(in:):ListaBancosViewController.swift">
+         contextName = "closure #1 in closure #1 in ListaBancosViewController.filtrar(_:indexFiltro:):ListaBancosViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "arrBancosOrdenados">
+               value = "arrBancosFiltered">
+            </PersistentString>
+            <PersistentString
+               value = "$0.Codigo.lowercased().contains(textoABuscar.lowercased())">
+            </PersistentString>
+            <PersistentString
+               value = "$0.Nombre">
+            </PersistentString>
+            <PersistentString
+               value = "letra">
+            </PersistentString>
+            <PersistentString
+               value = "textoABuscar.lowercased()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -15,6 +27,64 @@
          <PersistentStrings>
             <PersistentString
                value = "arrBancosOrdenados">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.numberOfSections(in:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosOrdenados">
+            </PersistentString>
+            <PersistentString
+               value = "searchBar.isActive">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.tableView(_:cellForRowAt:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosFiltered">
+            </PersistentString>
+            <PersistentString
+               value = "isFiltered">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.filtrar(_:campoFiltro:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosFiltered">
+            </PersistentString>
+            <PersistentString
+               value = "arrBancosFiltered[section].bancos.count">
+            </PersistentString>
+            <PersistentString
+               value = "arrBancosOrdenados">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.searchBar(_:textDidChange:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosFiltered">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.filtrar(_:indexFiltro:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosFiltered">
+            </PersistentString>
+            <PersistentString
+               value = "arrBancosOrdenados">
+            </PersistentString>
+            <PersistentString
+               value = "scopeNames[indexFiltro]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -23,7 +23,9 @@ class NuevoBancoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.title = "Nuevo Banco"
+		self.navigationItem.backBarButtonItem?.title = "Volver"
+		
     }
     
 
