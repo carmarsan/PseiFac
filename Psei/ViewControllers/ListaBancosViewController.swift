@@ -28,7 +28,9 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         GetJsonBancos()
-		searchBar.placeholder = "Introduzca un texto a buscar"
+		
+		arrBancosFiltered = arrBancosOrdenados
+		
 		setupNavigation()
 
     }
@@ -54,17 +56,26 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	// Método que filtra los datos
 	func filtrar(_ textoABuscar: String, indexFiltro: Int = 0)
 	{
-		arrBancosFiltered.removeAll()
+			arrBancosFiltered.removeAll()
 		
 		arrBancosFiltered = arrBancosOrdenados.map({
 			return BancosOrdenados(
 				letra: $0.letra,
 				bancos: $0.bancos.filter({
+					if indexFiltro == 0
+					{
+						return ($0.Codigo).lowercased().contains(textoABuscar)
+					}
+					else{
+						return $0.Nombre.lowercased().contains(textoABuscar)
+					}
 					//return scopeNames[indexFiltro] == "Nombre" ? $0.Nombre.lowercased().contains(textoABuscar.lowercased()) : $0.Codigo.lowercased().contains(textoABuscar.lowercased())
-					return $0.Nombre.contains(textoABuscar)
+					//return $0.Nombre.contains(textoABuscar)
 				})
 			)
 		}).filter { $0.bancos.count > 0 }
+		
+		//isFiltered = arrBancosFiltered.count > 0
 		
 		table.reloadData()
 	}
@@ -75,16 +86,18 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 		
 		if isFiltered && searchBar.text != ""
 		{
-			filtrar(searchBar.text!, indexFiltro: selectedScope)
+			filtrar(searchBar.text!.lowercased(), indexFiltro: selectedScope)
 		}
 	}
 	
+	// Cuando se escribe en el buscador
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		
 		if searchText.count > 0
 		{
-			filtrar(searchText, indexFiltro: searchBar.selectedScopeButtonIndex)
 			isFiltered = true
+			filtrar(searchText.lowercased(), indexFiltro: searchBar.selectedScopeButtonIndex)
+			
 		}
 		else{
 			
@@ -97,7 +110,7 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		if 	isFiltered
+		if 	isFiltered  //&& arrBancosFiltered.count > 0
 		{
 			return arrBancosFiltered[section].bancos.count
 		}
@@ -108,7 +121,9 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
-		if isFiltered {
+		
+		if isFiltered //& arrBancosFiltered.count > 0
+		{
 			return arrBancosFiltered.count
 		}
 		else {
@@ -119,15 +134,23 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell : UITableViewCell = table.dequeueReusableCell(withIdentifier: "cellListaBancos", for: indexPath)
 		
-		if isFiltered {
-			cell.textLabel?.text = arrBancosFiltered[indexPath.section].bancos[indexPath.row].Codigo + " - " + arrBancosFiltered[indexPath.section].bancos[indexPath.row].Nombre
+		if isFiltered
+		{
+			if arrBancosFiltered.count > 0
+			{
+				cell.textLabel?.text = arrBancosFiltered[indexPath.section].bancos[indexPath.row].Codigo + " - " + arrBancosFiltered[indexPath.section].bancos[indexPath.row].Nombre
 			
-			cell.detailTextLabel?.text = arrBancosFiltered[indexPath.section].bancos[indexPath.row].FechaAlta
+				cell.detailTextLabel?.text = arrBancosFiltered[indexPath.section].bancos[indexPath.row].FechaAlta
+			}
 		}
-		else {
-			cell.textLabel?.text = arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Codigo + " - " + arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Nombre
+		else
+		{
+			if arrBancosOrdenados.count > 0
+			{
+				cell.textLabel?.text = arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Codigo + " - " + arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Nombre
 		
-			cell.detailTextLabel?.text = arrBancosOrdenados[indexPath.section].bancos[indexPath.row].FechaAlta
+				cell.detailTextLabel?.text = arrBancosOrdenados[indexPath.section].bancos[indexPath.row].FechaAlta
+			}
 		}
 		return cell
 	}
@@ -138,7 +161,7 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let label = UILabel()
-		let letra = isFiltered ? arrBancosFiltered[section].letra : arrBancosOrdenados[section].letra
+		let letra = isFiltered && arrBancosFiltered.count > 0 ? arrBancosFiltered[section].letra : arrBancosOrdenados[section].letra
 		
 		label.text = "   \(letra)"
 		label.backgroundColor = UIColor.blue
@@ -151,8 +174,8 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 		func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 			let vc = storyboard?.instantiateViewController(withIdentifier: "NuevoBanco") as? NuevoBancoViewController  // DetailViewController o el nombre que le hayamos puesto al detalle
 			
-			if isFiltered {
-				
+			if isFiltered && arrBancosFiltered.count > 0
+			{
 				vc?.banco = Banco(Id: arrBancosFiltered[indexPath.section].bancos[indexPath.row].BancoId, Codigo: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Codigo, Nombre: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Nombre, Direccion: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Direccion ?? "", Mostrar: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Mostrar, FechaAlta: arrBancosFiltered[indexPath.section].bancos[indexPath.row].FechaAlta)
 			}
 			else {
@@ -164,7 +187,15 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	// Ponemos las letras a la derecha como índice
 	func sectionIndexTitles(for tableView: UITableView) -> [String]? {
 		
-		return isFiltered ? arrBancosOrdenados.map({ $0.letra }) : arrBancosFiltered.map({ $0.letra })
+		if isFiltered
+		{
+			return arrBancosFiltered.map({ $0.letra })
+		}
+		else
+		{
+			return arrBancosOrdenados.map({ $0.letra })
+		}
+		
 	}
 	
 	
