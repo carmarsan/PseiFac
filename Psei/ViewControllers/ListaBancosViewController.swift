@@ -67,10 +67,8 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 						return ($0.Codigo).lowercased().contains(textoABuscar)
 					}
 					else{
-						return $0.Nombre.lowercased().contains(textoABuscar)
+						return ($0.Nombre).lowercased().contains(textoABuscar)
 					}
-					//return scopeNames[indexFiltro] == "Nombre" ? $0.Nombre.lowercased().contains(textoABuscar.lowercased()) : $0.Codigo.lowercased().contains(textoABuscar.lowercased())
-					//return $0.Nombre.contains(textoABuscar)
 				})
 			)
 		}).filter { $0.bancos.count > 0 }
@@ -275,31 +273,3 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 
 }
 
-//extension ListaBancosViewController: UISearchResultsUpdating
-//{
-//	func updateSearchResults(for searchController: UISearchController) {
-//		arrBancosFiltered.removeAll()
-//
-//		for registro in arrBancosOrdenados {
-//			for banco in registro.bancos
-//			{
-//				if banco.Nombre == searchBar!.text
-//				{
-//					arrBancosFiltered.append(<#T##newElement: BancosOrdenados##BancosOrdenados#>)
-//				}
-//			}
-//		}
-//
-//
-//		//arrBancosFiltered = arrBancosOrdenados.filter({ $0.bancos. .contains(where: 	searchBar!.text)  })
-//	}
-//
-//	func searchBarIsEmpty()
-//	{
-//
-//	}
-//
-//
-//
-//
-//}
