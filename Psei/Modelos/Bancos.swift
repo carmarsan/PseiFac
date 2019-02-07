@@ -94,13 +94,14 @@ class Banco: Codable {
 //		urlComponents.path = "/posts"
 //		guard let url = urlComponents.url else { fatalError("Could not create URL from components") }
 		
-		let urlSW = "http://webapi.camasa.es/api/Bancos/" + String(banco.BancoId)
+		let urlSW = "http://webapi.camasa.es/api/Bancos/" + String(banco.BancoId)  // para PUT
+		//let urlSW = "http://webapi.camasa.es/api/Bancos"  para POST
 		
 		guard let url = URL(string: urlSW) else { return }
 		
 		// Specify this request as being a POST method
 		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
+		request.httpMethod = "PUT"
 		// Make sure that we include headers specifying that our request's HTTP body
 		// will be JSON encoded
 		var headers = request.allHTTPHeaderFields ?? [:]

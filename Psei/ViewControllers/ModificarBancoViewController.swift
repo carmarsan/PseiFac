@@ -40,7 +40,9 @@ class ModificarBancoViewController: UIViewController {
 	// Cuando damos a guardar
 	@IBAction func btnSaveClick(_ sender: Any) {
 		
-		Banco.Save(banco: banco) { (error) in
+		let bank: Banco = Banco(Id: banco.BancoId, Codigo: codigoText.text!, Nombre: NombreText.text!, Direccion: DireccionText.text!, Mostrar: mostrarSwitch.isOn, FechaAlta: banco.FechaAlta)
+		
+		Banco.Save(banco : bank) { (error) in
 			if let error = error {
 				fatalError(error.localizedDescription)
 			}
