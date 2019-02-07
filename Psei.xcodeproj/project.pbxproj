@@ -16,7 +16,7 @@
 		07FF55AB21FF4748005D376C /* FacturaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF55AA21FF4748005D376C /* FacturaViewController.swift */; };
 		07FF55AD21FF4E52005D376C /* ListaBancosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF55AC21FF4E52005D376C /* ListaBancosViewController.swift */; };
 		07FF55B021FF51AC005D376C /* Bancos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF55AF21FF51AC005D376C /* Bancos.swift */; };
-		07FF55B221FF5F31005D376C /* NuevoBancoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF55B121FF5F31005D376C /* NuevoBancoViewController.swift */; };
+		07FF55B221FF5F31005D376C /* ModificarBancoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FF55B121FF5F31005D376C /* ModificarBancoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		07FF55AA21FF4748005D376C /* FacturaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacturaViewController.swift; sourceTree = "<group>"; };
 		07FF55AC21FF4E52005D376C /* ListaBancosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListaBancosViewController.swift; path = Psei/ViewControllers/ListaBancosViewController.swift; sourceTree = SOURCE_ROOT; };
 		07FF55AF21FF51AC005D376C /* Bancos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bancos.swift; sourceTree = "<group>"; };
-		07FF55B121FF5F31005D376C /* NuevoBancoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoBancoViewController.swift; sourceTree = "<group>"; };
+		07FF55B121FF5F31005D376C /* ModificarBancoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModificarBancoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,7 @@
 				07FF559921FF46A5005D376C /* MaestrosViewController.swift */,
 				07FF55AA21FF4748005D376C /* FacturaViewController.swift */,
 				07FF55AC21FF4E52005D376C /* ListaBancosViewController.swift */,
-				07FF55B121FF5F31005D376C /* NuevoBancoViewController.swift */,
+				07FF55B121FF5F31005D376C /* ModificarBancoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07FF55B221FF5F31005D376C /* NuevoBancoViewController.swift in Sources */,
+				07FF55B221FF5F31005D376C /* ModificarBancoViewController.swift in Sources */,
 				07FF55AD21FF4E52005D376C /* ListaBancosViewController.swift in Sources */,
 				07FF55B021FF51AC005D376C /* Bancos.swift in Sources */,
 				07FF559A21FF46A5005D376C /* MaestrosViewController.swift in Sources */,

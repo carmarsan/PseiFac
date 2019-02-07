@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ListaBancosViewController.tableView(_:didSelectRowAt:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Direccion">
+            </PersistentString>
+            <PersistentString
+               value = "vc">
+            </PersistentString>
+            <PersistentString
+               value = "arrBancosOrdenados[indexPath.section].bancos[indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.tableView(_:numberOfRowsInSection:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "miJson">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in closure #1 in ListaBancosViewController.filtrar(_:indexFiltro:):ListaBancosViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -23,27 +45,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ListaBancosViewController.GetJsonBancos():ListaBancosViewController.swift">
+         contextName = "static Banco.Save(banco:completionHandler:):Bancos.swift">
          <PersistentStrings>
             <PersistentString
-               value = "arrBancosOrdenados">
+               value = "String(jsonData)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ListaBancosViewController.numberOfSections(in:):ListaBancosViewController.swift">
+         contextName = "ListaBancosViewController.searchBar(_:textDidChange:):ListaBancosViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "isFiltered">
-            </PersistentString>
-            <PersistentString
-               value = "arrBancosOrdenados">
-            </PersistentString>
-            <PersistentString
-               value = "searchBar.isActive">
-            </PersistentString>
-            <PersistentString
-               value = "arrBancosFiltered.count">
+               value = "arrBancosFiltered">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -68,24 +81,65 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ListaBancosViewController.filtrar(_:campoFiltro:):ListaBancosViewController.swift">
+         contextName = "ListaBancosViewController.init(coder:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "miJson">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.numberOfSections(in:):ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "isFiltered">
+            </PersistentString>
+            <PersistentString
+               value = "arrBancosOrdenados">
+            </PersistentString>
+            <PersistentString
+               value = "searchBar.isActive">
+            </PersistentString>
+            <PersistentString
+               value = "arrBancosFiltered.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.sectionIndexTitles(for:):ListaBancosViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "arrBancosFiltered">
             </PersistentString>
             <PersistentString
-               value = "arrBancosFiltered[section].bancos.count">
+               value = "arrBancosOrdenados">
             </PersistentString>
+            <PersistentString
+               value = "isFiltered">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ListaBancosViewController.viewDidLoad():ListaBancosViewController.swift">
+         <PersistentStrings>
             <PersistentString
                value = "arrBancosOrdenados">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ListaBancosViewController.searchBar(_:textDidChange:):ListaBancosViewController.swift">
+         contextName = "closure #1 in ListaBancosViewController.filtrar(_:indexFiltro:):ListaBancosViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "arrBancosFiltered">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ListaBancosViewController.GetJsonBancos():ListaBancosViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrBancosOrdenados">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -107,24 +161,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in ListaBancosViewController.filtrar(_:indexFiltro:):ListaBancosViewController.swift">
+         contextName = "ListaBancosViewController.filtrar(_:campoFiltro:):ListaBancosViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "arrBancosFiltered">
             </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ListaBancosViewController.sectionIndexTitles(for:):ListaBancosViewController.swift">
-         <PersistentStrings>
             <PersistentString
-               value = "arrBancosFiltered">
+               value = "arrBancosFiltered[section].bancos.count">
             </PersistentString>
             <PersistentString
                value = "arrBancosOrdenados">
-            </PersistentString>
-            <PersistentString
-               value = "isFiltered">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -18,16 +18,29 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	
 	let scopeNames = ["Codigo", "Nombre"]
 	
-	let searchController = UISearchController(searchResultsController: nil)
-	
 	@IBOutlet weak var searchBar: UISearchBar!
-	
 	@IBOutlet weak var table: UITableView!
-	
-    override func viewDidLoad() {
+	@IBOutlet weak var indicador: UIActivityIndicatorView!
+
+
+	override func viewDidLoad() {
         super.viewDidLoad()
 
-        GetJsonBancos()
+		indicador.hidesWhenStopped = true
+		indicador.startAnimating()
+		
+		Banco.GetJson(completion: { (response) in
+			self.arrBancosOrdenados = response
+			
+			DispatchQueue.main.async {
+				
+				self.table.reloadData()
+				self.indicador.stopAnimating()
+			}
+			
+		})
+		print("En el hilo principal")
+        //GetJsonBancos()
 		
 		arrBancosFiltered = arrBancosOrdenados
 		
@@ -37,12 +50,12 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 	
 	func setupNavigation()
 	{
-		if #available(iOS 11.0, *) {
-			navigationController?.title = "Nuevo Banco"
-			navigationController?.navigationBar.prefersLargeTitles = true
-		} else {
-			// Fallback on earlier versions
-		}
+//		if #available(iOS 11.0, *) {
+//			navigationController?.title = "Nuevo Banco"
+//			navigationController?.navigationBar.prefersLargeTitles = true
+//		} else {
+//			// Fallback on earlier versions
+//		}
 	}
 	
 	// Actualiza la tabla
@@ -117,6 +130,11 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 			return arrBancosOrdenados[section].bancos.count
 		}
 	}
+	
+	// Función para editar la celda: DELETE, INSERT
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		guard editingStyle == .delete else { return }
+	}
 
 	func numberOfSections(in tableView: UITableView) -> Int {
 		
@@ -129,7 +147,9 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 		}
 	}
 	
+	// Ponemos los valores en la celda
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		
 		let cell : UITableViewCell = table.dequeueReusableCell(withIdentifier: "cellListaBancos", for: indexPath)
 		
 		if isFiltered
@@ -170,11 +190,12 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 
 	 // Función al seleccionar una fila para instanciar el viewcontroller de los Detalles y pasar los datos
 		func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-			let vc = storyboard?.instantiateViewController(withIdentifier: "NuevoBanco") as? NuevoBancoViewController  // DetailViewController o el nombre que le hayamos puesto al detalle
-			
+			let vc = storyboard?.instantiateViewController(withIdentifier: "ModificarBanco") as? ModificarBancoViewController  // DetailViewController o el nombre que le hayamos puesto al detalle
+
 			if isFiltered && arrBancosFiltered.count > 0
 			{
 				vc?.banco = Banco(Id: arrBancosFiltered[indexPath.section].bancos[indexPath.row].BancoId, Codigo: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Codigo, Nombre: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Nombre, Direccion: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Direccion ?? "", Mostrar: arrBancosFiltered[indexPath.section].bancos[indexPath.row].Mostrar, FechaAlta: arrBancosFiltered[indexPath.section].bancos[indexPath.row].FechaAlta)
+				
 			}
 			else {
 				vc?.banco = Banco(Id: arrBancosOrdenados[indexPath.section].bancos[indexPath.row].BancoId, Codigo: arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Codigo, Nombre: arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Nombre, Direccion: arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Direccion ?? "", Mostrar: arrBancosOrdenados[indexPath.section].bancos[indexPath.row].Mostrar, FechaAlta: arrBancosOrdenados[indexPath.section].bancos[indexPath.row].FechaAlta)
@@ -195,81 +216,5 @@ class ListaBancosViewController: UIViewController, UITableViewDelegate, UITableV
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	// REMARK: - Coger el JSON del WEBAPI
-	func GetJsonBancos()
-	{
-		let cadenaApi = "http://webapi.camasa.es/api/Bancos"
-		
-		guard let url = URL(string: cadenaApi) else { return }
-		
-		URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-			
-			if let response = response {
-				print (response)
-			}
-			
-			guard let data = data else { return }
-			
-			do
-			{
-				//let structura =  try JSONDecoder().decode([bancos].self, from: data)
-				let structura =  try JSONDecoder().decode([Banco].self, from: data)
-				self.claseBancos.removeAll()
-				
-				for banco in structura
-				{
-					let newBanco = Banco(Id: banco.BancoId, Codigo: banco.Codigo, Nombre: banco.Nombre, Direccion: banco.Direccion ?? "", Mostrar: banco.Mostrar, FechaAlta: banco.FechaAlta)
-					
-					self.claseBancos.append(newBanco)
-				}
-				
-				for	banco in self.claseBancos
-				{
-					let letra = banco.Nombre.prefix(1)
-					
-					if let encontrado = self.arrBancosOrdenados.first(where: {$0.letra == letra})
-					{
-						// Encontrado
-						encontrado.bancos.append(banco)
-					}
-					else
-					{
-						// No encontrado
-						let bo: BancosOrdenados = BancosOrdenados(letra: String(letra), bancos: [banco])
-						self.arrBancosOrdenados.append(bo)
-					}
-					
-				}
-				
-				self.arrBancosOrdenados.sort(by: { $0.letra  < $1.letra })
-				
-				//self.claseBancos.sort(by: { $0.Nombre < $1.Nombre })
-				self.UpdateData()
-				
-				//print(self.arrBancosOrdenados)
-				
-			}catch let jsonError{
-				print ("Error serializando json ", jsonError)
-			}
-			
-		}).resume()
-	}
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
