@@ -71,24 +71,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-F3-MLG">
-                                <rect key="frame" x="43" y="108" width="73" height="73"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="45Z-F3-MLG" secondAttribute="height" multiplier="1:1" id="Ifs-7w-LbZ"/>
-                                    <constraint firstAttribute="width" constant="73" id="cFw-q1-J3E"/>
-                                    <constraint firstAttribute="height" constant="73" id="tpO-K8-AaT"/>
-                                </constraints>
-                                <state key="normal" title="Bancos" image="Bancos"/>
-                                <connections>
-                                    <segue destination="skK-jo-VmZ" kind="show" identifier="segueToListaBancos" id="1lH-2E-ekH"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jVl-kz-XNt">
+                                <rect key="frame" x="43" y="108" width="73" height="93.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45Z-F3-MLG">
+                                        <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="45Z-F3-MLG" secondAttribute="height" multiplier="1:1" id="Ifs-7w-LbZ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="cFw-q1-J3E"/>
+                                            <constraint firstAttribute="height" constant="73" id="tpO-K8-AaT"/>
+                                        </constraints>
+                                        <state key="normal" title="Bancos" image="Bancos"/>
+                                        <connections>
+                                            <segue destination="skK-jo-VmZ" kind="show" identifier="segueToListaBancos" id="1lH-2E-ekH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bancos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpp-zl-jWs">
+                                        <rect key="frame" x="8" y="73" width="57" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="45Z-F3-MLG" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="38" id="I4Q-ry-fj7"/>
-                            <constraint firstItem="45Z-F3-MLG" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="43" id="Y7R-ZL-4I8"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="D1s-I5-GBH"/>
